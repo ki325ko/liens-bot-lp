@@ -28,11 +28,13 @@ $body .= "電話番号: {$phone}\n";
 $body .= "お問い合わせ内容:\n{$message}\n\n";
 $body .= "送信日時: " . date('Y-m-d H:i:s') . "\n";
 
-// SMTP認証で直接Gmailに送信
+// Google Workspace SMTP経由で送信
 $smtp_host = 'smtp.gmail.com';
 $smtp_port = 587;
 $smtp_user = 'info@liens-web.com';
 $smtp_pass = 'yhrtsgawmrhzlddr';
+
+$sent = false;
 
 $socket = @fsockopen($smtp_host, $smtp_port, $errno, $errstr, 10);
 if ($socket) {
@@ -76,16 +78,64 @@ if ($socket) {
 
         fwrite($socket, $msg);
         $result = fgets($socket, 512);
-
-        // 送信成功
-    } else {
-        // 認証失敗
+        if (substr($result, 0, 3) === '250') {
+            $sent = true;
+        }
     }
 
     fwrite($socket, "QUIT\r\n");
     fclose($socket);
-} else {
-    // SMTP接続失敗
+}
+
+// Gmail SMTPが失敗した場合、ロリポップSMTP経由でフォールバック
+if (!$sent) {
+    $smtp_host2 = 'smtp.lolipop.jp';
+    $smtp_user2 = 'info@liens-web.com';
+    $smtp_pass2 = 'Absolut814_0325';
+
+    $socket2 = @fsockopen($smtp_host2, 587, $errno2, $errstr2, 10);
+    if ($socket2) {
+        fgets($socket2, 512);
+        fwrite($socket2, "EHLO liens-web.com\r\n");
+        while ($line = fgets($socket2, 512)) { if (substr($line, 3, 1) === ' ') break; }
+        fwrite($socket2, "STARTTLS\r\n");
+        fgets($socket2, 512);
+        stream_socket_enable_crypto($socket2, true, STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT);
+        fwrite($socket2, "EHLO liens-web.com\r\n");
+        while ($line = fgets($socket2, 512)) { if (substr($line, 3, 1) === ' ') break; }
+        fwrite($socket2, "AUTH LOGIN\r\n");
+        fgets($socket2, 512);
+        fwrite($socket2, base64_encode($smtp_user2) . "\r\n");
+        fgets($socket2, 512);
+        fwrite($socket2, base64_encode($smtp_pass2) . "\r\n");
+        $auth2 = fgets($socket2, 512);
+
+        if (substr($auth2, 0, 3) === '235') {
+            fwrite($socket2, "MAIL FROM:<info@liens-web.com>\r\n");
+            fgets($socket2, 512);
+            fwrite($socket2, "RCPT TO:<{$to}>\r\n");
+            fgets($socket2, 512);
+            fwrite($socket2, "DATA\r\n");
+            fgets($socket2, 512);
+
+            $msg2 = "From: LIENS BOT <info@liens-web.com>\r\n";
+            $msg2 .= "To: {$to}\r\n";
+            $msg2 .= "Subject: {$subject}\r\n";
+            $msg2 .= "Reply-To: {$email}\r\n";
+            $msg2 .= "MIME-Version: 1.0\r\n";
+            $msg2 .= "Content-Type: text/plain; charset=UTF-8\r\n";
+            $msg2 .= "Content-Transfer-Encoding: 8bit\r\n";
+            $msg2 .= "\r\n";
+            $msg2 .= $body . "\r\n";
+            $msg2 .= ".\r\n";
+
+            fwrite($socket2, $msg2);
+            fgets($socket2, 512);
+        }
+
+        fwrite($socket2, "QUIT\r\n");
+        fclose($socket2);
+    }
 }
 
 header('Location: thanks.html');
