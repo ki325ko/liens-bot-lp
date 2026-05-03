@@ -1267,20 +1267,20 @@
     .bottom-cta { background: var(--bg-white); }
 
     .cta-card {
-      background: #EEF4F9;
+      background: #fff;
       border-radius: 28px;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
       position: relative;
       min-height: 380px;
+      box-shadow: 0 4px 32px rgba(28,100,180,0.08);
     }
 
-    .cta-dots {
+    .cta-deco-circle {
       position: absolute;
-      bottom: 24px;
-      left: 24px;
-      opacity: 0.25;
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .cta-card-text {
@@ -1291,9 +1291,9 @@
     }
 
     .cta-card-text h2 {
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-size: clamp(2.8rem, 5vw, 3.8rem);
       font-weight: 900;
-      line-height: 1.25;
+      line-height: 1.2;
       margin-bottom: 20px;
     }
     .cta-title-dark { color: var(--primary); display: block; }
@@ -1874,15 +1874,9 @@
     <section class="section bottom-cta">
       <div class="container">
         <div class="cta-card reveal">
-          <svg class="cta-dots" width="90" height="90" viewBox="0 0 90 90" fill="none">
-            <g fill="#28B5D5">
-              <circle cx="5" cy="5" r="3"/><circle cx="22" cy="5" r="3"/><circle cx="39" cy="5" r="3"/><circle cx="56" cy="5" r="3"/>
-              <circle cx="5" cy="22" r="3"/><circle cx="22" cy="22" r="3"/><circle cx="39" cy="22" r="3"/><circle cx="56" cy="22" r="3"/>
-              <circle cx="5" cy="39" r="3"/><circle cx="22" cy="39" r="3"/><circle cx="39" cy="39" r="3"/><circle cx="56" cy="39" r="3"/>
-              <circle cx="5" cy="56" r="3"/><circle cx="22" cy="56" r="3"/><circle cx="39" cy="56" r="3"/><circle cx="56" cy="56" r="3"/>
-              <circle cx="5" cy="73" r="3"/><circle cx="22" cy="73" r="3"/><circle cx="39" cy="73" r="3"/><circle cx="56" cy="73" r="3"/>
-            </g>
-          </svg>
+          <div class="cta-deco-circle" style="width:320px;height:320px;top:-100px;left:-80px;background:rgba(40,181,213,0.08);"></div>
+          <div class="cta-deco-circle" style="width:180px;height:180px;bottom:-60px;left:200px;background:rgba(40,181,213,0.06);"></div>
+          <div class="cta-deco-circle" style="width:240px;height:240px;top:-60px;right:320px;background:rgba(27,143,168,0.07);"></div>
           <div class="cta-card-text">
             <h2>
               <span class="cta-title-dark">まずは無料で、</span>
