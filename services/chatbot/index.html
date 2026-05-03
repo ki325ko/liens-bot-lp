@@ -798,19 +798,6 @@
     /* ===== Solution Section ===== */
     .solution-section { background: #EEF4F9; }
 
-    .solution-title-wrap {
-      position: relative;
-      display: inline-block;
-    }
-    .solution-dots {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.3;
-    }
-    .solution-dots-left { right: calc(100% + 20px); }
-    .solution-dots-right { left: calc(100% + 20px); }
-
     .solution-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -886,41 +873,8 @@
       display: block;
     }
 
-    .solution-bottom {
-      background: #fff;
-      border-radius: 20px;
-      max-width: 1040px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 24px 36px;
-      box-shadow: 0 4px 20px rgba(0, 60, 100, 0.07);
-    }
-
-    .solution-bottom-img {
-      width: 110px;
-      flex-shrink: 0;
-      object-fit: contain;
-    }
-
-    .solution-bottom-text h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-heading);
-      margin-bottom: 6px;
-    }
-
-    .solution-bottom-text p {
-      font-size: 0.88rem;
-      color: var(--text-body);
-      line-height: 1.7;
-    }
-
     @media (max-width: 768px) {
       .solution-cards { grid-template-columns: 1fr; }
-      .solution-bottom { flex-direction: column; text-align: center; padding: 24px 20px; }
-      .solution-dots { display: none; }
     }
 
     /* ===== Bento Features ===== */
@@ -1511,25 +1465,7 @@
     <section class="section solution-section" id="solution">
       <div class="container" style="text-align: center;">
         <span class="problem-header-label reveal">Solution</span>
-        <div class="solution-title-wrap reveal">
-          <svg class="solution-dots solution-dots-left" width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <g fill="#28B5D5">
-              <circle cx="5" cy="5" r="3"/><circle cx="20" cy="5" r="3"/><circle cx="35" cy="5" r="3"/><circle cx="50" cy="5" r="3"/>
-              <circle cx="5" cy="20" r="3"/><circle cx="20" cy="20" r="3"/><circle cx="35" cy="20" r="3"/><circle cx="50" cy="20" r="3"/>
-              <circle cx="5" cy="35" r="3"/><circle cx="20" cy="35" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="50" cy="35" r="3"/>
-              <circle cx="5" cy="50" r="3"/><circle cx="20" cy="50" r="3"/><circle cx="35" cy="50" r="3"/><circle cx="50" cy="50" r="3"/>
-            </g>
-          </svg>
-          <h2 class="section-title" style="font-weight: 900; color: var(--primary);">LIENS BOT<span class="accent-text">が解決します</span></h2>
-          <svg class="solution-dots solution-dots-right" width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <g fill="#28B5D5">
-              <circle cx="5" cy="5" r="3"/><circle cx="20" cy="5" r="3"/><circle cx="35" cy="5" r="3"/><circle cx="50" cy="5" r="3"/>
-              <circle cx="5" cy="20" r="3"/><circle cx="20" cy="20" r="3"/><circle cx="35" cy="20" r="3"/><circle cx="50" cy="20" r="3"/>
-              <circle cx="5" cy="35" r="3"/><circle cx="20" cy="35" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="50" cy="35" r="3"/>
-              <circle cx="5" cy="50" r="3"/><circle cx="20" cy="50" r="3"/><circle cx="35" cy="50" r="3"/><circle cx="50" cy="50" r="3"/>
-            </g>
-          </svg>
-        </div>
+        <h2 class="section-title reveal" style="font-weight: 900;"><span class="accent-text">LIENS BOT</span><span class="accent-text">が解決します</span></h2>
         <p class="section-subtitle reveal">AIチャットボットが最適解を提供</p>
 
         <div class="solution-cards">
@@ -1580,13 +1516,6 @@
           </div>
         </div>
 
-        <div class="solution-bottom reveal">
-          <img class="solution-bottom-img" src="images/solution-04.png" alt="AIと人の力で">
-          <div class="solution-bottom-text" style="text-align: left;">
-            <h3>AIと人の力で、顧客体験をもっとスマートに。</h3>
-            <p>運用代行付きだから、導入後も安心して成果につながります。</p>
-          </div>
-        </div>
       </div>
     </section>
 
