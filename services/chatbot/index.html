@@ -1264,24 +1264,83 @@
     }
 
     /* ===== Bottom CTA ===== */
-    .bottom-cta {
-      background: linear-gradient(180deg, var(--accent-light) 0%, var(--bg-white) 100%);
-      text-align: center;
+    .bottom-cta { background: var(--bg-white); }
+
+    .cta-card {
+      background: #EEF4F9;
+      border-radius: 28px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      position: relative;
+      min-height: 380px;
     }
 
-    .bottom-cta h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 14px;
+    .cta-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      opacity: 0.25;
     }
-    .bottom-cta p {
+
+    .cta-card-text {
+      flex: 1;
+      padding: 60px 40px 60px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card-text h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .cta-title-dark { color: var(--primary); display: block; }
+    .cta-title-blue { color: var(--accent); display: block; }
+
+    .cta-card-text p {
       font-size: 1.05rem;
       color: var(--text-body);
+      line-height: 1.8;
       margin-bottom: 36px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+    }
+
+    .cta-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 52px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(40,181,213,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-pill-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(40,181,213,0.45);
+    }
+
+    .cta-card-img {
+      width: 380px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .cta-card-img img {
+      width: 100%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .cta-card { flex-direction: column; }
+      .cta-card-text { padding: 40px 28px 32px; }
+      .cta-card-img { width: 60%; margin: 0 auto; }
     }
 
     /* ===== Footer ===== */
@@ -1814,9 +1873,28 @@
     <!-- ===== Bottom CTA ===== -->
     <section class="section bottom-cta">
       <div class="container">
-        <h2 class="reveal">まずは無料で、<br>試してみませんか？</h2>
-        <p class="reveal">30日間の無料トライアルで、LIENS BOTの全機能をお試しいただけます。</p>
-        <a href="contact.html" class="btn btn-white btn-large reveal">お問い合わせはこちら &rarr;</a>
+        <div class="cta-card reveal">
+          <svg class="cta-dots" width="90" height="90" viewBox="0 0 90 90" fill="none">
+            <g fill="#28B5D5">
+              <circle cx="5" cy="5" r="3"/><circle cx="22" cy="5" r="3"/><circle cx="39" cy="5" r="3"/><circle cx="56" cy="5" r="3"/>
+              <circle cx="5" cy="22" r="3"/><circle cx="22" cy="22" r="3"/><circle cx="39" cy="22" r="3"/><circle cx="56" cy="22" r="3"/>
+              <circle cx="5" cy="39" r="3"/><circle cx="22" cy="39" r="3"/><circle cx="39" cy="39" r="3"/><circle cx="56" cy="39" r="3"/>
+              <circle cx="5" cy="56" r="3"/><circle cx="22" cy="56" r="3"/><circle cx="39" cy="56" r="3"/><circle cx="56" cy="56" r="3"/>
+              <circle cx="5" cy="73" r="3"/><circle cx="22" cy="73" r="3"/><circle cx="39" cy="73" r="3"/><circle cx="56" cy="73" r="3"/>
+            </g>
+          </svg>
+          <div class="cta-card-text">
+            <h2>
+              <span class="cta-title-dark">まずは無料で、</span>
+              <span class="cta-title-blue">試してみませんか？</span>
+            </h2>
+            <p>30日間の無料トライアルで、<br>LIENS BOTの全機能をお試しいただけます。</p>
+            <a href="contact.html" class="cta-pill-btn">お問い合わせはこちら &rarr;</a>
+          </div>
+          <div class="cta-card-img">
+            <img src="images/cta-robot.png?v=1" alt="LIENS BOT">
+          </div>
+        </div>
       </div>
     </section>
   </main>
