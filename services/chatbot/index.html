@@ -705,92 +705,94 @@
       .trust-bar-items { gap: 20px; }
     }
 
-    /* ===== Problem / Solution ===== */
-    .ps-section { background: var(--bg-alt); }
+    /* ===== Problem Section ===== */
+    .problem-section { background: #EEF4F9; }
 
-    .ps-grid {
+    .problem-header-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .problem-header-label::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--accent-dark);
+      margin: 8px auto 0;
+    }
+
+    .problem-cards {
       display: grid;
-      grid-template-columns: 1fr 56px 1fr;
-      gap: 0;
-      align-items: stretch;
-      max-width: 920px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1040px;
       margin: 0 auto;
     }
 
-    .ps-col {
-      display: flex;
-      flex-direction: column;
+    .problem-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 24px 40px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 60, 100, 0.07);
     }
 
-    .ps-col-header {
-      padding: 18px 28px;
-      font-size: 0.82rem;
+    .problem-card-num {
+      font-size: 1.45rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-align: left;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    }
-    .ps-problems .ps-col-header {
-      background: #FEF2F2;
-      color: #DC2626;
-    }
-    .ps-solutions .ps-col-header {
-      background: var(--accent-light);
-      color: var(--accent-dark);
-    }
-
-    .ps-item {
-      padding: 22px 28px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-white);
-    }
-    .ps-problems .ps-item:last-child { border-radius: 0 0 0 var(--radius-lg); }
-    .ps-solutions .ps-item:last-child { border-radius: 0 0 var(--radius-lg) 0; }
-
-    .ps-item-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .ps-problems .ps-item-icon { background: #FEE2E2; color: #DC2626; }
-    .ps-solutions .ps-item-icon { background: var(--accent-light); color: var(--accent); }
-
-    .ps-item-text { text-align: left; }
-    .ps-item-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; color: var(--text-heading); letter-spacing: 0; }
-    .ps-item-text p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
-
-    .ps-arrow-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 56px;
-    }
-    .ps-arrow-col svg {
       color: var(--accent);
-      opacity: 0.5;
+      text-align: left;
+      margin-bottom: 16px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .problem-card-img {
+      width: 100%;
+      max-width: 240px;
+      height: 188px;
+      object-fit: contain;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .problem-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0;
+    }
+    .problem-card-title::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--accent);
+      margin: 10px auto 0;
+    }
+
+    .problem-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+
+    .problem-down-arrow {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--accent);
     }
 
     @media (max-width: 768px) {
-      .ps-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .ps-arrow-col { display: none; }
-      .ps-problems .ps-item:last-child, .ps-solutions .ps-item:last-child {
-        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-      }
+      .problem-cards { grid-template-columns: 1fr; gap: 20px; }
+      .problem-card-img { height: 160px; }
     }
 
     /* ===== Bento Features ===== */
@@ -1340,67 +1342,39 @@
     </section>
 
 
-    <!-- ===== Problem / Solution ===== -->
-    <section class="section ps-section" id="problems">
+    <!-- ===== Problem Section ===== -->
+    <section class="section problem-section" id="problems">
       <div class="container" style="text-align: center;">
-        <span class="section-label reveal">Problem &amp; Solution</span>
-        <h2 class="section-title reveal">よくある課題を、<span class="accent-text">LIENS BOT</span>が解決</h2>
-        <p class="section-subtitle reveal">従来の方法では対応しきれなかった課題に、AIチャットボットが最適解を提供します。</p>
+        <span class="problem-header-label reveal">Problem</span>
+        <h2 class="section-title reveal">よくあるお悩み</h2>
+        <p class="section-subtitle reveal">従来の方法では対応しきれなかった課題</p>
 
-        <div class="ps-grid reveal">
-          <div class="ps-col ps-problems">
-            <div class="ps-col-header">課題</div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&times;</div>
-              <div class="ps-item-text">
-                <h4>同じ質問への繰り返し対応</h4>
-                <p>スタッフの時間が定型的な問い合わせに奪われている</p>
-              </div>
-            </div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&times;</div>
-              <div class="ps-item-text">
-                <h4>営業時間外の機会損失</h4>
-                <p>夜間・休日の問い合わせを取りこぼしている</p>
-              </div>
-            </div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&times;</div>
-              <div class="ps-item-text">
-                <h4>サイトの低いCV率</h4>
-                <p>ホームページ訪問者が予約・購入に至らない</p>
-              </div>
-            </div>
+        <div class="problem-cards">
+          <div class="problem-card reveal reveal-d1">
+            <div class="problem-card-num">01</div>
+            <img class="problem-card-img" src="images/problem-01.png" alt="同じ質問への繰り返し対応">
+            <h3 class="problem-card-title">同じ質問への繰り返し対応</h3>
+            <p class="problem-card-desc">スタッフの時間が定型的な<br>問い合わせに奪われている</p>
           </div>
+          <div class="problem-card reveal reveal-d2">
+            <div class="problem-card-num">02</div>
+            <img class="problem-card-img" src="images/problem-02.png" alt="営業時間外の機会損失">
+            <h3 class="problem-card-title">営業時間外の機会損失</h3>
+            <p class="problem-card-desc">夜間・休日の問い合わせを<br>取りこぼしている</p>
+          </div>
+          <div class="problem-card reveal reveal-d3">
+            <div class="problem-card-num">03</div>
+            <img class="problem-card-img" src="images/problem-03.png" alt="サイトの低いCV率">
+            <h3 class="problem-card-title">サイトの低いCV率</h3>
+            <p class="problem-card-desc">ホームページ訪問者が<br>予約・購入に至らない</p>
+          </div>
+        </div>
 
-          <div class="ps-arrow-col">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-          </div>
-
-          <div class="ps-col ps-solutions">
-            <div class="ps-col-header">LIENS BOTの解決策</div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&#x2713;</div>
-              <div class="ps-item-text">
-                <h4>AIが自動で即座に回答</h4>
-                <p>ナレッジを学習し、的確な回答を24時間自動配信</p>
-              </div>
-            </div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&#x2713;</div>
-              <div class="ps-item-text">
-                <h4>24時間365日対応</h4>
-                <p>深夜でも休日でも、すべての問い合わせに即レスポンス</p>
-              </div>
-            </div>
-            <div class="ps-item">
-              <div class="ps-item-icon">&#x2713;</div>
-              <div class="ps-item-text">
-                <h4>会話からそのまま予約・購入</h4>
-                <p>チャット内でシームレスにコンバージョンへ誘導</p>
-              </div>
-            </div>
-          </div>
+        <div class="problem-down-arrow reveal">
+          <svg width="20" height="56" viewBox="0 0 20 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="0" x2="10" y2="36" stroke="currentColor" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>
+            <path d="M3 44L10 53L17 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
     </section>
