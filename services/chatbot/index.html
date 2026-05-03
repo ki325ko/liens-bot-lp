@@ -932,52 +932,65 @@
     }
 
     /* ===== Steps / How it works ===== */
-    .steps-section { background: var(--bg-alt); }
+    .steps-section { background: #EEF4F9; }
 
     .steps-row {
       display: flex;
       align-items: flex-start;
-      gap: 0;
-      position: relative;
-      max-width: 860px;
+      justify-content: center;
+      max-width: 900px;
       margin: 0 auto;
-    }
-
-    .steps-row::before {
-      content: '';
-      position: absolute;
-      top: 34px;
-      left: calc(16.67% + 34px);
-      right: calc(16.67% + 34px);
-      height: 2px;
-      background: var(--border);
     }
 
     .step-item {
       flex: 1;
       text-align: center;
-      position: relative;
+    }
+
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 90px;
+      color: #94A3B8;
+      flex-shrink: 0;
+      width: 48px;
     }
 
     .step-num {
-      width: 68px;
-      height: 68px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: var(--cta-gradient);
+      background: var(--accent);
       color: #fff;
-      font-size: 1.4rem;
+      font-size: 1rem;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 18px;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 4px 16px rgba(40,181,213,0.2);
+      margin: 0 auto 12px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .step-icon-wrap {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #D6E8F4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .step-icon-wrap img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
     }
 
     .step-item h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 6px;
       color: var(--text-heading);
@@ -988,12 +1001,8 @@
     }
 
     @media (max-width: 768px) {
-      .steps-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 36px;
-      }
-      .steps-row::before { display: none; }
+      .steps-row { flex-direction: column; align-items: center; gap: 32px; }
+      .step-arrow { display: none; }
     }
 
     /* ===== Demo Section ===== */
@@ -1595,16 +1604,31 @@
         <div class="steps-row">
           <div class="step-item reveal reveal-d1">
             <div class="step-num">1</div>
+            <div class="step-icon-wrap">
+              <img src="images/step-01.png?v=1" alt="アカウント登録">
+            </div>
             <h3>アカウント登録</h3>
             <p>メールアドレスで即開始</p>
           </div>
+          <div class="step-arrow">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M8 5l7 6-7 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <div class="step-item reveal reveal-d2">
             <div class="step-num">2</div>
+            <div class="step-icon-wrap">
+              <img src="images/step-02.png?v=1" alt="ボットを設定">
+            </div>
             <h3>ボットを設定</h3>
             <p>ナレッジ登録・シナリオ作成</p>
           </div>
+          <div class="step-arrow">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M8 5l7 6-7 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <div class="step-item reveal reveal-d3">
             <div class="step-num">3</div>
+            <div class="step-icon-wrap">
+              <img src="images/step-03.png?v=1" alt="サイトに埋め込み">
+            </div>
             <h3>サイトに埋め込み</h3>
             <p>コードをコピペするだけ</p>
           </div>
